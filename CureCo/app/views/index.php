@@ -1,4 +1,5 @@
 <?php require_once 'inc/header.php'  ?>
+<?php require_once 'inc/navbar.php'  ?>
 
 <div>
     home page
