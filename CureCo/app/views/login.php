@@ -12,16 +12,16 @@
         flex items-center justify-center">
 
     <div class="w-full h-100">
-      <h1 class="text-center text-2xl md:text-2xl font-bold leading-tight mt-12">Se connecter</h1>
+      <h1 class="text-center text-2xl md:text-2xl font-bold leading-tight mt-12">Bienvenue , Connecter ici</h1>
 
       <form class="mt-6" action="#" method="POST">
         <div>
-          <label class="block text-gray-700">Email Address</label>
+          <label class="block text-gray-700">Email Address :</label>
           <input type="email" id="email" placeholder="Enter Email Address" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required>
           <p id="email_err" class="hidden text-red-500">Email est obligatoire</p>
         </div>
         <div class="mt-4">
-          <label class="block text-gray-700">Password</label>
+          <label class="block text-gray-700">Password :</label>
           <input type="password" id="pass" placeholder="Enter Password" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                 focus:bg-white focus:outline-none" required>
                 <p id="pass_err" class="hidden text-red-500">Email est obligatoire</p>
@@ -31,8 +31,8 @@
           <a href="#" class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot Password?</a>
         </div>
 
-        <button type="button" class="w-full block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg
-              px-4 py-3 mt-6" id="login">Log In</button>
+        <button type="button" class="w-full block bg-blue-700 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg
+              px-4 py-3 mt-6" id="login">Connecter</button>
       </form>
 
     </div>
