@@ -22,7 +22,10 @@ $(document).ready(function () {
                             'Succes!',
                             'login avec succes!',
                             'success'
-                        )      
+                        ) 
+                        setTimeout(()=>{
+                            location.replace('../Pages/dashbord');
+                        },2000);      
                     }
                     else{
                         Swal.fire({
