@@ -14,9 +14,6 @@ class Pages extends Controller{
     public function about(){  
         $this->view('about');
     }
-    public function produits(){  
-        $this->view('produits');
-    }
     public function login(){  
         $this->view('login');
     }
