@@ -9,8 +9,7 @@
   <!-- Section: Design Block -->
   <section class="mb-32 text-gray-800 text-center">
     <h2 class="text-3xl font-bold mb-20">Statistiques</h2>
-
-    <div class="grid lg:gap-x-12 md:grid-cols-3 gap-4">
+    <div class="h-screen grid items-center lg:gap-x-12 md:grid-cols-3 gap-4">
       <div class="mb-12 lg:mb-0">
         <div class="rounded-lg shadow-lg h-full block bg-white">
           <div class="flex justify-center">
@@ -82,9 +81,9 @@
     </div>
   </section>
   <!-- Section: Design Block -->
-
 </div>
-<!-- Container for demo purpose -->
+
+
 
 
 <?php require_once APPROOT.'/views/inc/footer.php'  ?>
