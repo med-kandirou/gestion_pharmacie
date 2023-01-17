@@ -28,7 +28,7 @@
             </div>
           </div>
           <div class="p-6">
-            <h3 class="text-2xl font-bold text-blue-600 mb-4">1000</h3>
+            <h3 class="text-2xl font-bold text-blue-600 mb-4"><?= $data['total'] ?></h3>
             <h5 class="text-lg font-medium mb-4">Components</h5>
           </div>
         </div>
@@ -51,8 +51,8 @@
             </div>
           </div>
           <div class="p-6">
-            <h3 class="text-2xl font-bold text-blue-600 mb-4">70%</h3>
-            <h5 class="text-lg font-medium mb-4">Growth</h5>
+            <h3 class="text-2xl font-bold text-blue-600 mb-4"><?= $data['max'] ?></h3>
+            <h5 class="text-lg font-medium mb-4">maximum prix</h5>
           </div>
         </div>
       </div>
@@ -74,8 +74,8 @@
             </div>
           </div>
           <div class="p-6">
-            <h3 class="text-2xl font-bold text-blue-600 mb-4">49</h3>
-            <h5 class="text-lg font-medium mb-4">Projects</h5>
+            <h3 class="text-2xl font-bold text-blue-600 mb-4"><?= $data['min'] ?></h3>
+            <h5 class="text-lg font-medium mb-4">Minimum prix</h5>
           </div>
         </div>
       </div>

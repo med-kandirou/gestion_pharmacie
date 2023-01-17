@@ -13,4 +13,9 @@ class Users extends Controller{
             echo $data;
         }
     }
+
+    public function deconnecter(){
+        session_destroy();
+        $this->view('index');
+    }
 }

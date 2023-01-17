@@ -20,10 +20,13 @@ class Pages extends Controller{
     public function login(){  
         $this->view('login');
     }
-    public function dashbord(){  
-        $this->view('admin/dashbord');
-    }
+
     
+    public function dashbord(){  
+        $data=$this->product->getstatistiques();
+        $this->view('admin/dashbord',$data);
+    }
+
     public function gestion(){  
         $data=$this->product->getprod();
         $this->view('admin/gestion',$data);

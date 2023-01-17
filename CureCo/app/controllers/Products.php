@@ -6,14 +6,13 @@ class Products extends Controller{
         $this->product=$this->model('Product');
     }
 
-    public function getprod (){
-        if(isset($_SESSION['id'])){
-            $data=$this->product->getcat();
-            $this->view('admin/gestion',$data);
-        } 
+    public function getprod(){
+
     }
 
+    public function getstatistiques(){
 
+    }
 
 
 }

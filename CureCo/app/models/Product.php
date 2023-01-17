@@ -10,4 +10,11 @@ class Product extends database{
         return $data;
     }
 
+    public function getstatistiques(){
+        $sql = "SELECT count(id_prod) as 'total' ,MAX(`prix`) as 'max' ,MIN(`prix`) as 'min' FROM `product`";
+        $stmt=$this->openConnection()->query($sql);
+        $data=$stmt->fetch();
+        return $data;
+    }
+
 }
