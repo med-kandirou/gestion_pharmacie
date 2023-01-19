@@ -23,6 +23,9 @@ $(document).ready(function () {
                     $('#nom_prod').val(data.libelle);
                     $('#quantite').val(data.quantite);
                     $('#prix').val(data.prix);
+                    $('#category').val(data.id_cat)
+                    $('#category').text(data.cat);
+
                 },
             );
         });

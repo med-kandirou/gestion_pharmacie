@@ -24,7 +24,8 @@ class Pages extends Controller{
 
     public function gestion(){  
         $data=$this->product->getprod();
-        $this->view('admin/gestion',$data);
+        $data2=$this->product->getcat();
+        $this->view('admin/gestion',$data,$data2);
     }
 
 }

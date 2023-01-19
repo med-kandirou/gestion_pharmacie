@@ -10,8 +10,16 @@ class Product extends database{
         return $data;
     }
 
+
+    public function getcat(){
+        $sql = "select * from category";
+        $stmt=$this->openConnection()->query($sql);
+        $data=$stmt->fetchAll();
+        return $data;
+    }
+
     public function getinfo($id_prod){
-        $sql = "SELECT `id_prod`, `libelle`, `quantite`, `prix`, `image`, c.cat FROM `product` p inner join category c on c.id_cat=p.idcat and p.id_prod=:id_prod";
+        $sql = "SELECT `id_prod`, `libelle`, `quantite`, `prix`, `image`,c.id_cat, c.cat FROM `product` p inner join category c on c.id_cat=p.idcat and p.id_prod=:id_prod";
         $stmt=$this->openConnection()->prepare($sql);
         $stmt->bindParam(':id_prod',$id_prod);
         $stmt->execute();
