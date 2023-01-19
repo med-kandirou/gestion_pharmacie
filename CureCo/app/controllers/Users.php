@@ -14,7 +14,7 @@ class Users extends Controller{
         }
     }
 
-    public function deconnecter(){
+    public function logout(){
         session_destroy();
         $this->view('index');
     }
