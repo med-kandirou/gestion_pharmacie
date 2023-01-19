@@ -13,6 +13,12 @@ class Products extends Controller{
             exit();
         }
     }
+    
+    public function getinfo(){
+        $id_prod=$_POST['id_prod'];
+        $data=$this->product->getinfo($id_prod);
+        echo json_encode($data);
+    }
 
 
 
