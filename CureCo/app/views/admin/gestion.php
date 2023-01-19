@@ -41,7 +41,7 @@
                     Prix
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Date ajoute
+                    Date d'ajoute
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Catégorie
@@ -64,7 +64,7 @@
                         <?= $prod['prix'] ?>
                     </td>
                     <td class="px-6 py-4">
-                        <?= $prod['date_ajout'] ?>
+                        <?= $prod['date'] ?>
                     </td>
                     <td class="px-6 py-4">
                         <?= $prod['cat'] ?>
