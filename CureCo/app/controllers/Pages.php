@@ -1,9 +1,7 @@
 <?php
 
 class Pages extends Controller{
-
     private $product;
-
     function __construct() {
        $this->product=$this->model('product');
     }

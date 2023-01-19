@@ -17,4 +17,12 @@ class Product extends database{
         return $data;
     }
 
+    public function delete_prod($id_prod){
+        $sql = "DELETE FROM `product` WHERE id_prod=:id_prod";
+        $stmt=$this->openConnection()->prepare($sql);
+        $stmt->bindParam('id_prod',$id_prod);
+        if($stmt->execute()){
+            return true;
+        }
+    }
 }
