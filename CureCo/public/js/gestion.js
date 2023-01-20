@@ -1,6 +1,7 @@
 $(document).ready(function () {
     // recupere id_prod
     let id_prod;
+
     var delete_prod=document.querySelectorAll('.delete_btn');
     delete_prod.forEach(item => {
         $(item).click(function () { 
@@ -19,6 +20,7 @@ $(document).ready(function () {
             $.post("../Products/getinfo/", {id_prod:item.value},
                 function (response) {
                     var data=JSON.parse(response);
+                    id_prod=data.id_prod;
                     $('#nom_prod').val(data.libelle);
                     $('#quantite').val(data.quantite);
                     $('#prix').val(data.prix);
@@ -39,6 +41,10 @@ $(document).ready(function () {
             return 0;
         }
     }
+    var image='';
+    $("#image").on("change", function(e){
+        image=e.target.files[0].name;
+    })
 
     $('#update').click(function () { 
         getempty('nom_prod');
@@ -46,9 +52,25 @@ $(document).ready(function () {
         getempty('prix');
 
         if(getempty('nom_prod')==0 && getempty('quantite')==0 && getempty('prix')==0 ){
-            $.post("../Products/update", {nom:$('nom_prod').val() , quantite:$('quantite').val() ,prix:$('prix').val()},
+            $.post("../Products/update", {id_prod:id_prod,libelle:$('#nom_prod').val() , quantite:$('#quantite').val(),prix:$('#prix').val(),id_cat:$( "#select_cate" ).val(),image:image},
                 function (data) {
-                    
+                    if(data=='updated'){
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'bottom-end',
+                            showConfirmButton: false,
+                            timer: 2000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                              toast.addEventListener('mouseenter', Swal.stopTimer)
+                              toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                          }) 
+                        Toast.fire({
+                          icon: 'success',
+                          title: 'Le produit a été bien modifié'
+                        })
+                    }
                 },
             );
         }

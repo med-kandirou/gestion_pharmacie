@@ -42,4 +42,30 @@ class Product extends database{
             return true;
         }
     }
+
+    public function updatewithImage($id_prod,$libelle,$quantite,$prix,$image,$id_cat){
+        $sql = "UPDATE `product` SET `libelle`=:libelle,`quantite`=:quantite,`prix`=:prix,`image`=:image,`idcat`=:id_cat WHERE id_prod=:id_prod";
+        $stmt=$this->openConnection()->prepare($sql);
+        $stmt->bindParam('id_prod',$id_prod);
+        $stmt->bindParam('libelle',$libelle);
+        $stmt->bindParam('quantite',$quantite);
+        $stmt->bindParam('prix',$prix);
+        $stmt->bindParam('image',$image);
+        $stmt->bindParam('id_cat',$id_cat);
+        if($stmt->execute()){
+            return true;
+        }
+    }
+    public function updateWithoutImage($id_prod,$libelle,$quantite,$prix,$id_cat){
+        $sql = "UPDATE `product` SET `libelle`=:libelle,`quantite`=:quantite,`prix`=:prix,`idcat`=:id_cat WHERE id_prod=:id_prod";
+        $stmt=$this->openConnection()->prepare($sql);
+        $stmt->bindParam('id_prod',$id_prod);
+        $stmt->bindParam('libelle',$libelle);
+        $stmt->bindParam('quantite',$quantite);
+        $stmt->bindParam('prix',$prix);
+        $stmt->bindParam('id_cat',$id_cat);
+        if($stmt->execute()){
+            return true;
+        }
+    }
 }

@@ -19,6 +19,24 @@ class Products extends Controller{
         $data=$this->product->getinfo($id_prod);
         echo json_encode($data);
     }
+    public function update(){
+        $id_prod=$_POST['id_prod'];
+        $libelle=$_POST['libelle'];
+        $quantite=$_POST['quantite'];
+        $prix=$_POST['prix'];
+        $image=$_POST['image'];
+        $id_cat=$_POST['id_cat'];
+        if($image!=''){
+            if($this->product->updatewithImage($id_prod,$libelle,$quantite,$prix,$image,$id_cat)){
+                echo 'updated';
+            }
+        }
+        else{
+            if($this->product->updateWithoutImage($id_prod,$libelle,$quantite,$prix,$id_cat)){
+                echo 'updated';
+            }
+        }
+    }
 
 
 
