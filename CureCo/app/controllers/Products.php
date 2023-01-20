@@ -24,10 +24,11 @@ class Products extends Controller{
         $libelle=$_POST['libelle'];
         $quantite=$_POST['quantite'];
         $prix=$_POST['prix'];
-        $image=$_POST['image'];
+        $image=$_FILES['image']['name'];
         $id_cat=$_POST['id_cat'];
-        if($image!=''){
+        if($image!=''){ 
             if($this->product->updatewithImage($id_prod,$libelle,$quantite,$prix,$image,$id_cat)){
+                move_uploaded_file($_FILES['image']['tmp_name'], 'img/'.$_FILES['image']['name']);
                 echo 'updated';
             }
         }
