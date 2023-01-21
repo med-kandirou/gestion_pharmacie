@@ -4,23 +4,23 @@ $(document).ready(function () {
 
     var delete_prod=document.querySelectorAll('.delete_btn');
     delete_prod.forEach(item => {
-        $(item).click(function () { 
+        $(item).on('click',function () { 
             id_prod=item.value;
         });
     });
     // confirmer la suppression
-    $('.confirm_delete').click(function () { 
+    $('.confirm_delete').on('click',function () { 
        location.href='../Products/delete_prod/'+id_prod+'';
     });
     //afficher les information du produit 
     var getinfo=document.querySelectorAll('.getinfo');
     getinfo.forEach(item => {
-        $(item).click(function () { 
+        $(item).on('click',function () { 
             $.post("../Products/getinfo/", {id_prod:item.value},
                 function (response) {
                     var data=JSON.parse(response);
                     id_prod=data.id_prod;
-                    $('#nom_prod').val(data.libelle);
+                    $('#libelle').val(data.libelle);
                     $('#quantite').val(data.quantite);
                     $('#prix').val(data.prix);
                     $('#category').val(data.id_cat)
@@ -40,45 +40,54 @@ $(document).ready(function () {
             return 0;
         }
     }
-    let image='';
+    let image_upload='';
     $("#image").on("change", function(){
-        image=$('#image').prop("files")[0];
-        //console.log(image)
+        image_upload=$('#image').prop("files")[0];
     })
-    $('#update').on('click',function () { 
+    $('#form-update').on('submit',function (e) { 
+        e.preventDefault();
         getempty('nom_prod');
         getempty('quantite');
         getempty('prix');
-        console.log(image)
-        if(getempty('nom_prod')==0 && getempty('quantite')==0 && getempty('prix')==0 ){
-            $.post("../Products/update", {id_prod:id_prod,libelle:$('#nom_prod').val(),quantite:$('#quantite').val(),prix:$('#prix').val(),id_cat:$( "#select_cate" ).val(),image:image},
-                function (data) {
-                    // if(data=='updated'){
-                    //     const Toast = Swal.mixin({
-                    //         toast: true,
-                    //         position: 'bottom-end',
-                    //         showConfirmButton: false,
-                    //         timer: 2000,
-                    //         timerProgressBar: true,
-                    //         didOpen: (toast) => {
-                    //           toast.addEventListener('mouseenter', Swal.stopTimer)
-                    //           toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    //         }
-                    //       }) 
-                    //     Toast.fire({
-                    //       icon: 'success',
-                    //       title: 'Le produit a été bien modifié'
-                    //     })
-                    // }
-                    
-                },
-            );
+        var form=new FormData(this);
+        if(getempty('nom_prod')==0 && getempty('quantite')==0 && getempty('prix')==0){
+            $.ajax({
+                url: "../Products/update/"+id_prod+"",type: "POST",data: new FormData(this),contentType: false,
+                cache: false,
+                processData:false,
+                success: function(data)
+                {
+                    console.log(data);
+                },   
+                error: function(e) 
+                {
+                    console.log(e);
+                }          
+            });
+            // $.post("../Products/update", {id_prod:id_prod,libelle:$('#nom_prod').val(),quantite:$('#quantite').val(),prix:$('#prix').val(),id_cat:$( "#select_cate" ).val(),image:image},
+            //     function (data) {
+            //         if(data=='updated'){
+            //             const Toast = Swal.mixin({
+            //                 toast: true,
+            //                 position: 'bottom-end',
+            //                 showConfirmButton: false,
+            //                 timer: 2000,
+            //                 timerProgressBar: true,
+            //                 didOpen: (toast) => {
+            //                   toast.addEventListener('mouseenter', Swal.stopTimer)
+            //                   toast.addEventListener('mouseleave', Swal.resumeTimer)
+            //                 }
+            //               }) 
+            //             Toast.fire({
+            //               icon: 'success',
+            //               title: 'Le produit a été bien modifié'
+            //             })
+            //         }
+            //         console.log(data);
+            //     },
+            // );
         }
-
-        
     });
-
-
 });
 
 

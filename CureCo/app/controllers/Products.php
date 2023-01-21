@@ -19,15 +19,15 @@ class Products extends Controller{
         $data=$this->product->getinfo($id_prod);
         echo json_encode($data);
     }
-    public function update(){
-        $id_prod=$_POST['id_prod'];
+    public function update($id_prod){
+        $id_prod=$id_prod;
         $libelle=$_POST['libelle'];
         $quantite=$_POST['quantite'];
         $prix=$_POST['prix'];
-        $image=$_FILES['image']['name'];
-        $id_cat=$_POST['id_cat'];
-        if($image!=''){ 
-            if($this->product->updatewithImage($id_prod,$libelle,$quantite,$prix,$image,$id_cat)){
+        $image=$_FILES['image'];
+        $id_cat=$_POST['select_cate'];
+        if($image['name']!=''){ 
+            if($this->product->updatewithImage($id_prod,$libelle,$quantite,$prix,$image['name'],$id_cat)){
                 move_uploaded_file($_FILES['image']['tmp_name'], 'img/'.$_FILES['image']['name']);
                 echo 'updated';
             }
