@@ -39,6 +39,7 @@ class Products extends Controller{
             }
         }
     }
+    //trier par prix
     function trierPrixCroissant(){
         $data=$this->product->trierPrixCroissant();
         $this->view('admin/gestion',$data);
@@ -47,8 +48,16 @@ class Products extends Controller{
         $data=$this->product->trierPrixDecroissant();
         $this->view('admin/gestion',$data);
     }
-
-
+    //trier par prix
+    function trierDateCroissant(){
+        $data=$this->product->trierDateCroissant();
+        $this->view('admin/gestion',$data);
+    }
+    function trierDateDecroissant(){
+        $data=$this->product->trierDateDecroissant();
+        $this->view('admin/gestion',$data);
+    }
+    //chercher
     function chercher(){
         $nom=$_POST['nom'];
         $data=$this->product->chercher($nom);

@@ -68,15 +68,13 @@ class Product extends database{
             return true;
         }
     }
-    
+    //triage par prix
     public function trierPrixCroissant(){
         $sql = "SELECT `id_prod`, `libelle`, `quantite`, `prix`, `image`, `date`, c.cat FROM `product` p inner join category c on c.id_cat=p.idcat ORDER by prix";
         $stmt=$this->openConnection()->query($sql);
         $data=$stmt->fetchAll();
         return $data;
     }
-
-
     public function trierPrixDecroissant(){
         $sql = "SELECT `id_prod`, `libelle`, `quantite`, `prix`, `image`, `date`, c.cat FROM `product` p inner join category c on c.id_cat=p.idcat ORDER by prix desc";
         $stmt=$this->openConnection()->query($sql);
@@ -84,6 +82,21 @@ class Product extends database{
         return $data;
     }
 
+    //triage par date
+    public function trierDateCroissant(){
+        $sql = "SELECT `id_prod`, `libelle`, `quantite`, `prix`, `image`, `date`, c.cat FROM `product` p inner join category c on c.id_cat=p.idcat ORDER by date desc";
+        $stmt=$this->openConnection()->query($sql);
+        $data=$stmt->fetchAll();
+        return $data;
+    }
+    public function trierDateDecroissant(){
+        $sql = "SELECT `id_prod`, `libelle`, `quantite`, `prix`, `image`, `date`, c.cat FROM `product` p inner join category c on c.id_cat=p.idcat ORDER by date ";
+        $stmt=$this->openConnection()->query($sql);
+        $data=$stmt->fetchAll();
+        return $data;
+    }
+
+    //chercher 
     function chercher($nom){
         $sql = "SELECT `id_prod`, `libelle`, `quantite`, `prix`, `image`, `date`, c.cat FROM `product` p inner join category c on c.id_cat=p.idcat where libelle like '%".$nom."%'";
         $stmt=$this->openConnection()->query($sql);
