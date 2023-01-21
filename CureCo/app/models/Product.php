@@ -83,4 +83,11 @@ class Product extends database{
         $data=$stmt->fetchAll();
         return $data;
     }
+
+    function chercher($nom){
+        $sql = "SELECT `id_prod`, `libelle`, `quantite`, `prix`, `image`, `date`, c.cat FROM `product` p inner join category c on c.id_cat=p.idcat where libelle like '%".$nom."%'";
+        $stmt=$this->openConnection()->query($sql);
+        $data=$stmt->fetchAll();
+        return $data;
+    }
 }

@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(function () {
     // recupere id_prod
     let id_prod;
 
@@ -80,6 +80,20 @@ $(document).ready(function () {
             });
         }
     });
+
+
+    $('#search').on('keyup',function (){ 
+        $.post("../Products/chercher", {nom:$('#search').val()},
+            function (response) {
+                var data=JSON.parse(response);
+                console.log(data);
+            },
+        );
+        
+    });
+
+
+
 });
 
 
