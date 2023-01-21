@@ -49,7 +49,6 @@ $(document).ready(function () {
         getempty('nom_prod');
         getempty('quantite');
         getempty('prix');
-        var form=new FormData(this);
         if(getempty('nom_prod')==0 && getempty('quantite')==0 && getempty('prix')==0){
             $.ajax({
                 url: "../Products/update/"+id_prod+"",type: "POST",data: new FormData(this),contentType: false,
@@ -57,35 +56,28 @@ $(document).ready(function () {
                 processData:false,
                 success: function(data)
                 {
-                    console.log(data);
-                },   
-                error: function(e) 
-                {
-                    console.log(e);
-                }          
+                    if(data=='updated'){
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'bottom-end',
+                            showConfirmButton: false,
+                            timer: 1400,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                              toast.addEventListener('mouseenter', Swal.stopTimer)
+                              toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                          }) 
+                        Toast.fire({
+                          icon: 'success',
+                          title: 'Le produit a été bien modifié'
+                        })
+                        setTimeout(()=>{
+                            location.href=location.href;
+                        },1400);
+                    } 
+                },           
             });
-            // $.post("../Products/update", {id_prod:id_prod,libelle:$('#nom_prod').val(),quantite:$('#quantite').val(),prix:$('#prix').val(),id_cat:$( "#select_cate" ).val(),image:image},
-            //     function (data) {
-            //         if(data=='updated'){
-            //             const Toast = Swal.mixin({
-            //                 toast: true,
-            //                 position: 'bottom-end',
-            //                 showConfirmButton: false,
-            //                 timer: 2000,
-            //                 timerProgressBar: true,
-            //                 didOpen: (toast) => {
-            //                   toast.addEventListener('mouseenter', Swal.stopTimer)
-            //                   toast.addEventListener('mouseleave', Swal.resumeTimer)
-            //                 }
-            //               }) 
-            //             Toast.fire({
-            //               icon: 'success',
-            //               title: 'Le produit a été bien modifié'
-            //             })
-            //         }
-            //         console.log(data);
-            //     },
-            // );
         }
     });
 });
