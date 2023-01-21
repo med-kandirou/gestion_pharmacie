@@ -19,6 +19,7 @@ class Products extends Controller{
         $data=$this->product->getinfo($id_prod);
         echo json_encode($data);
     }
+
     public function update($id_prod){
         $id_prod=$id_prod;
         $libelle=$_POST['libelle'];
@@ -38,8 +39,14 @@ class Products extends Controller{
             }
         }
     }
-
-
+    function trierPrixCroissant(){
+        $data=$this->product->trierPrixCroissant();
+        $this->view('admin/gestion',$data);
+    }
+    function trierPrixDecroissant(){
+        $data=$this->product->trierPrixDecroissant();
+        $this->view('admin/gestion',$data);
+    }
 
 
 }
