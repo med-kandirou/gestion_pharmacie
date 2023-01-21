@@ -40,7 +40,6 @@ $(function () {
             return 0;
         }
     }
-    let image_upload='';
     $("#image").on("change", function(){
         image_upload=$('#image').prop("files")[0];
     })
@@ -80,19 +79,50 @@ $(function () {
             });
         }
     });
-
-
     $('#search').on('keyup',function (){ 
         $.post("../Products/chercher", {nom:$('#search').val()},
             function (response) {
                 var data=JSON.parse(response);
-                console.log(data);
+                let tbody=document.getElementById('tbody');
+                if(data.length>0){
+                    $('#tbody').html('');
+                    for (let i = 0; i < data.length; i++) {
+                        tbody.innerHTML+=`
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <img src="../public/img/${data[i].image}" height="100" width="100">
+                            </th>
+                            <td class="px-6 py-4">
+                                ${data[i].libelle} 
+                            </td>
+                            <td class="px-6 py-4">
+                                ${data[i].quantite} 
+                            </td>
+                            <td class="px-6 py-4">
+                                ${data[i].prix}
+                            </td>
+                            <td class="px-6 py-4">
+                                ${data[i].date} 
+                            </td>
+                            <td class="px-6 py-4">
+                                ${data[i].cat}
+                            </td>
+                            <td class="px-6 py-4">
+                                <button value="${data[i].id_prod}" data-modal-target="popup-modal" data-modal-toggle="popup-modal"  class="delete_btn text-white bg-red-600 hover:bg-red-800 focus:outline-none font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2" type="button">Delete</button>
+                                <button value="${data[i].id_prod}" data-modal-target="update_produit" data-modal-toggle="update_produit"  type="button" data-dial-toggle="speed-dial-menu-default" aria-controls="speed-dial-menu-default" aria-expanded="false" class="getinfo text-white bg-blue-600 hover:bg-blue-800 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                                    Update
+                                </button>
+                            </td>
+                        </tr>`;
+                    }
+                }
+                else{
+                    tbody.innerHTML='<p class="text-3xl text-center mt-5 text-gray-900 dark:text-black">Aucun produit trouvé</p>';
+                }
             },
         );
         
     });
-
-
 
 });
 
