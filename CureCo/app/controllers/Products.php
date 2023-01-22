@@ -15,27 +15,31 @@ class Products extends Controller{
     }
     
     public function getinfo(){
-        $id_prod=$_POST['id_prod'];
-        $data=$this->product->getinfo($id_prod);
-        echo json_encode($data);
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            $id_prod=$_POST['id_prod'];
+            $data=$this->product->getinfo($id_prod);
+            echo json_encode($data);
+        }
     }
 
     public function update($id_prod){
-        $id_prod=$id_prod;
-        $libelle=$_POST['libelle'];
-        $quantite=$_POST['quantite'];
-        $prix=$_POST['prix'];
-        $image=$_FILES['image'];
-        $id_cat=$_POST['select_cate'];
-        if($image['name']!=''){ 
-            if($this->product->updatewithImage($id_prod,$libelle,$quantite,$prix,$image['name'],$id_cat)){
-                move_uploaded_file($_FILES['image']['tmp_name'], 'img/'.$_FILES['image']['name']);
-                echo 'updated';
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            $id_prod=$id_prod;
+            $libelle=$_POST['libelle'];
+            $quantite=$_POST['quantite'];
+            $prix=$_POST['prix'];
+            $image=$_FILES['image'];
+            $id_cat=$_POST['select_cate'];
+            if($image['name']!=''){ 
+                if($this->product->updatewithImage($id_prod,$libelle,$quantite,$prix,$image['name'],$id_cat)){
+                    move_uploaded_file($_FILES['image']['tmp_name'], 'img/'.$_FILES['image']['name']);
+                    echo 'updated';
+                }
             }
-        }
-        else{
-            if($this->product->updateWithoutImage($id_prod,$libelle,$quantite,$prix,$id_cat)){
-                echo 'updated';
+            else{
+                if($this->product->updateWithoutImage($id_prod,$libelle,$quantite,$prix,$id_cat)){
+                    echo 'updated';
+                }
             }
         }
     }
@@ -59,9 +63,11 @@ class Products extends Controller{
     }
     //chercher
     function chercher(){
-        $nom=$_POST['nom'];
-        $data=$this->product->chercher($nom);
-        echo json_encode($data);
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            $nom=$_POST['nom'];
+            $data=$this->product->chercher($nom);
+            echo json_encode($data);
+        }
     }
 
 
