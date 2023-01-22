@@ -22,6 +22,9 @@ class Pages extends Controller{
             $data=$this->product->getstatistiques();
             $this->view('admin/dashbord',$data);
         }
+        else{
+            $this->view('login');
+        }
         
     }
 
@@ -30,6 +33,9 @@ class Pages extends Controller{
             $data=$this->product->getprod();
             $data2=$this->product->getcat();
             $this->view('admin/gestion',$data,$data2);
+        }
+        else{
+            $this->view('login');
         }
     }
 
