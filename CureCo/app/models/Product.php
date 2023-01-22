@@ -102,4 +102,19 @@ class Product extends database{
         $data=$stmt->fetchAll();
         return $data;
     }
+
+    function addProduct($libelle,$quantite,$prix,$image,$id_cat){
+        $sql = "INSERT INTO `product`(`libelle`, `quantite`, `prix`, `image`, `idcat`) VALUES (:libelle,:quantite,:prix,:image,:id_cat)";
+        $stmt=$this->openConnection()->prepare($sql);
+        $stmt->bindParam('libelle',$libelle);
+        $stmt->bindParam('quantite',$quantite);
+        $stmt->bindParam('prix',$prix);
+        $stmt->bindParam('image',$image);
+        $stmt->bindParam('id_cat',$id_cat);
+        if($stmt->execute()){
+            return true;
+        }
+    }
+
 }
+
