@@ -158,9 +158,6 @@ $(function () {
         }  
     })
 
-    $('#add_other').on('click',function(){
-        $('#add_other').hide();
-    })
 
 });
 
