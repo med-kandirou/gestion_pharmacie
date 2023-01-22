@@ -83,11 +83,10 @@ $(function () {
         $.post("../Products/chercher", {nom:$('#search').val()},
             function (response) {
                 var data=JSON.parse(response);
-                let tbody=document.getElementById('tbody');
                 if(data.length>0){
-                    $('#tbody').html('');
+                    $('#tbody').empty();
                     for (let i = 0; i < data.length; i++) {
-                        tbody.innerHTML+=`
+                        $('#tbody').append(`
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 <img src="../public/img/${data[i].image}" height="100" width="100">
@@ -113,7 +112,7 @@ $(function () {
                                     Update
                                 </button>
                             </td>
-                        </tr>`;
+                        </tr>`);
                     }
                 }
                 else{
@@ -123,8 +122,6 @@ $(function () {
         );
         
     });
-
-
     $('#add_new_Prod').on('click',function(){
         let container_models=document.getElementById('container_models');
         container_models.innerHTML+=`
