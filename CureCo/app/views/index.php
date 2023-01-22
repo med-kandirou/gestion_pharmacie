@@ -14,8 +14,8 @@
                 Speak to Sales
             </a> 
         </div>
-        <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
-            <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png" alt="mockup">
+        <div class="hidden h-90 W-80 lg:mt-0 lg:col-span-5 lg:flex">
+            <img src="<?= URLROOT.'/img/pic6.jpg' ?>" alt="mockup">
         </div>                
     </div>
 </section>
@@ -34,38 +34,29 @@
         </div>
         <div class="grid grid-cols-2 gap-4 mt-8">
             <img class="w-full rounded-lg"
-                 src="https://images.pexels.com/photos/11820071/pexels-photo-11820071.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                 src="<?= URLROOT.'/img/pic1.jpg' ?>"
                  alt="office content 1">
             <img class="mt-4 w-full lg:mt-10 rounded-lg"
-                 src="https://images.pexels.com/photos/1122462/pexels-photo-1122462.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                 src="<?= URLROOT.'/img/pic2.jpg' ?>"
                  alt="office content 2">
         </div>
     </div>
 </section>
-
 
 <section class="bg-white dark:bg-gray-900">
-    <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
-        <div class="text-gray-500 sm:text-lg dark:text-gray-400 order-2">
-            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white capitalize">There's
-                more to explore</h2>
-            <p class="mb-4">If you’re ready to
-                learn more about the incredible adventures you can have on ShipCruiseTour, check out our 2021-2022
-                sailings — they’re all open to book right now. Dive into our deck plans and become an expert on the
-                fleet. Or discover why our Oasis Class and Amplified ships are rated among the best cruise ships in the
-                world</p>
-        </div>
-        <div class="grid grid-cols-2 gap-4 mt-8 lg:order-1">
-            <img class="w-full rounded-lg"
-                 src="https://images.pexels.com/photos/2634269/pexels-photo-2634269.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                 alt="office content 1">
-            <img class="mt-4 w-full lg:mt-10 rounded-lg"
-                 src="https://images.pexels.com/photos/2634269/pexels-photo-2634269.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                 alt="office content 2">
+    <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
+        <img class="w-full dark:hidden" src="<?= URLROOT.'/img/pic3.jpg' ?>" alt="dashboard image">
+        <img class="w-full hidden dark:block" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="dashboard image">
+        <div class="mt-4 md:mt-0">
+            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Let's create more tools and ideas that brings us together.</h2>
+            <p class="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">Flowbite helps you connect with friends and communities of people who share your interests. Connecting with your friends and family as well as discovering new ones is easy with features like Groups.</p>
+            <a href="#" class="inline-flex items-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900">
+                Get started
+                <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </a>
         </div>
     </div>
 </section>
-
 <?php require_once 'inc/footer.php'  ?>
 
 
