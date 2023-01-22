@@ -123,7 +123,7 @@ $(function () {
     });
     $('#form_add').on('submit',function(e){
         e.preventDefault();
-        getempty('id_add');
+        getempty('libelle_add');
         getempty('quantite_add');
         getempty('prix_add');
         getempty('image_add');
@@ -158,6 +158,18 @@ $(function () {
         }  
     })
 
+    $('#no').on('click',function(){
+        location.href="../pages/gestion";
+    })
+
+    $('#add_other').on('click',function(){
+        $('#libelle_add').val('');
+        $('#quantite_add').val('');
+        $('#prix_add').val('');
+        $('#image_add').val('');
+        $('#select_add').val('');
+    })
+    
 
 });
 
