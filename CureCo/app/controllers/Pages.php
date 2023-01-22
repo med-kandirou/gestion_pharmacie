@@ -18,14 +18,19 @@ class Pages extends Controller{
 
     
     public function dashbord(){  
-        $data=$this->product->getstatistiques();
-        $this->view('admin/dashbord',$data);
+        if(isset($_SESSION['id'])){
+            $data=$this->product->getstatistiques();
+            $this->view('admin/dashbord',$data);
+        }
+        
     }
 
     public function gestion(){  
-        $data=$this->product->getprod();
-        $data2=$this->product->getcat();
-        $this->view('admin/gestion',$data,$data2);
+        if(isset($_SESSION['id'])){
+            $data=$this->product->getprod();
+            $data2=$this->product->getcat();
+            $this->view('admin/gestion',$data,$data2);
+        }
     }
 
 }
