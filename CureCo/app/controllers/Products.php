@@ -51,7 +51,7 @@ class Products extends Controller{
     
     function addProduct(){
         if($_SERVER['REQUEST_METHOD']=='POST'){
-            for ($i=0; $i < count($_POST); $i++) { 
+            for ($i=0; $i < count($_POST['libelle']); $i++) { 
                 if($this->product->addProduct($_POST['libelle'][$i],$_POST['quantite'][$i],$_POST['prix'][$i],$_FILES['image']['name'][$i],$_POST['select_cate'][$i])){
                     move_uploaded_file($_FILES['image']['tmp_name'][$i], 'img/'.$_FILES['image']['name'][$i]);
                     echo 'added';

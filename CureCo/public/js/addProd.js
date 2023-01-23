@@ -36,6 +36,7 @@ $(function () {
     </div></br>
     <select name="select_cate[]" id="select_add" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         <option selected value="">--Select catégorie--</option>
+        <option value="1">tete</option>
     </select></br>`)     
     })
 
@@ -56,7 +57,16 @@ $(function () {
                 processData:false,
                 success: function(data)
                 {
-                    console.log(data);
+                    if(data=="added"){
+                        Swal.fire(
+                            'Succes!',
+                            'Les produits a été ajouté!',
+                            'success'
+                        )
+                        setTimeout(()=>{
+                            location.href="../pages/gestion";
+                        },1400)
+                    }
                 },           
             });
         }
