@@ -28,6 +28,15 @@ class Pages extends Controller{
         
     }
 
+    public function addProduct(){  
+        if(isset($_SESSION['id'])){
+            $this->view('admin/addProduct');
+        }
+        else{
+            $this->view('login');
+        }
+    }
+
     public function gestion(){  
         if(isset($_SESSION['id'])){
             $data=$this->product->getprod();

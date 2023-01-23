@@ -51,15 +51,12 @@ class Products extends Controller{
     
     function addProduct(){
         if($_SERVER['REQUEST_METHOD']=='POST'){
-            $libelle=$_POST['libelle'];
-            $quantite=$_POST['quantite'];
-            $prix=$_POST['prix'];
-            $image=$_FILES['image'];
-            $id_cat=$_POST['select_cate'];
-            if($this->product->addProduct($libelle,$quantite,$prix,$image['name'],$id_cat)){
-                move_uploaded_file($_FILES['image']['tmp_name'], 'img/'.$_FILES['image']['name']);
-                echo 'added';
-            }
+            for ($i=0; $i < count($_POST); $i++) { 
+                if($this->product->addProduct($_POST['libelle'][$i],$_POST['quantite'][$i],$_POST['prix'][$i],$_FILES['image']['name'][$i],$_POST['select_cate'][$i])){
+                    move_uploaded_file($_FILES['image']['tmp_name'][$i], 'img/'.$_FILES['image']['name'][$i]);
+                    echo 'added';
+                }
+            }  
         }
     }
 

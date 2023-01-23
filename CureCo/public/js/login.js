@@ -11,7 +11,7 @@ $(document).ready(function () {
             return true;
         }
     }
-    $('#login').click(function () { 
+    $('#login').on('click',function () { 
         checkfield('email');
         checkfield('pass');
         if(checkfield('email')==true && checkfield('pass')==true){
