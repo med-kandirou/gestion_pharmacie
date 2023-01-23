@@ -12,6 +12,7 @@ $(function () {
        location.href='../Products/delete_prod/'+id_prod+'';
     });
     //afficher les information du produit 
+
     var getinfo=document.querySelectorAll('.getinfo');
     getinfo.forEach(item => {
         $(item).on('click',function () { 
@@ -120,7 +121,7 @@ $(function () {
             },
         );
     });
-    
+
     $('#form_add').on('submit',function(e){
         e.preventDefault();
         getempty('libelle_add');
@@ -136,36 +137,27 @@ $(function () {
                 success: function(data)
                 {
                     if(data=='added'){
-                        const Toast = Swal.mixin({
-                            toast: true,
-                            position: 'bottom-end',
-                            showConfirmButton: false,
-                            timer: 1400,
-                            timerProgressBar: true,
-                            didOpen: (toast) => {
-                              toast.addEventListener('mouseenter', Swal.stopTimer)
-                              toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        Swal.fire({
+                            title: 'Produit bien ajouté',
+                            text: "pouvez-vous ajouter un autre ?",
+                            icon: 'success',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Oui!'
+                          }).then((result) => {
+                            if (result.isConfirmed) {
+                                $('#form_add')[0].reset();
                             }
-                          }) 
-                        Toast.fire({
-                          icon: 'success',
-                          title: 'Le produit a été bien modifié'
-                        })
+                            else{
+                                location.href=location.href;
+                            }
+                          })
                     }
                 },           
             });
         }  
     })
-
-    $('#no').on('click',function(){
-        location.href="../pages/gestion";
-    })
-
-    $('#add_other').on('click',function(){
-        $('#form_add')[0].reset();
-    })
-    
-
 });
 
 

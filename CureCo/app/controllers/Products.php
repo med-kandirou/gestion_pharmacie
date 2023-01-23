@@ -63,5 +63,11 @@ class Products extends Controller{
         }
     }
 
+    function chercher(){
+        $nom=$_POST['nom'];
+        $data=$this->product->chercher($nom);
+        echo json_encode($data);
+    }
+
 
 }
