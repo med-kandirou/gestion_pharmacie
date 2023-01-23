@@ -11,8 +11,8 @@ $(function () {
     $('.confirm_delete').on('click',function () { 
        location.href='../Products/delete_prod/'+id_prod+'';
     });
-    //afficher les information du produit 
 
+    //afficher les information du produit 
     var getinfo=document.querySelectorAll('.getinfo');
     getinfo.forEach(item => {
         $(item).on('click',function () { 
