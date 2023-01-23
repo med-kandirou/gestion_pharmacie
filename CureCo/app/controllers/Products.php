@@ -43,33 +43,12 @@ class Products extends Controller{
             }
         }
     }
-    //trier par prix
-    function trierPrixCroissant(){
-        $data=$this->product->trierPrixCroissant();
-        $this->view('admin/gestion',$data);
-    }
-    function trierPrixDecroissant(){
-        $data=$this->product->trierPrixDecroissant();
-        $this->view('admin/gestion',$data);
-    }
-    //trier par prix
-    function trierDateCroissant(){
-        $data=$this->product->trierDateCroissant();
-        $this->view('admin/gestion',$data);
-    }
-    function trierDateDecroissant(){
-        $data=$this->product->trierDateDecroissant();
-        $this->view('admin/gestion',$data);
-    }
-    //chercher
-    function chercher(){
-        if($_SERVER['REQUEST_METHOD']=='POST'){
-            $nom=$_POST['nom'];
-            $data=$this->product->chercher($nom);
-            echo json_encode($data);
-        }
-    }
 
+    function trierProduits($by,$ordre){
+        $data=$this->product->trierProduits($by,$ordre);
+        $this->view('admin/gestion',$data);
+    }
+    
     function addProduct(){
         if($_SERVER['REQUEST_METHOD']=='POST'){
             $libelle=$_POST['libelle'];
