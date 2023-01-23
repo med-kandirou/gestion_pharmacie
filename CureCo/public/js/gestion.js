@@ -119,8 +119,8 @@ $(function () {
                 }
             },
         );
-        
     });
+    
     $('#form_add').on('submit',function(e){
         e.preventDefault();
         getempty('libelle_add');
@@ -128,7 +128,6 @@ $(function () {
         getempty('prix_add');
         getempty('image_add');
         getempty('select_add');
-
         if(getempty('id_add')==0 && getempty('quantite_add')==0 && getempty('prix_add')==0 && getempty('image_add')==0 && getempty('select_add')==0){
             $.ajax({
                 url: "../Products/addProduct",type: "POST",data: new FormData(this),contentType: false,
@@ -163,11 +162,7 @@ $(function () {
     })
 
     $('#add_other').on('click',function(){
-        $('#libelle_add').val('');
-        $('#quantite_add').val('');
-        $('#prix_add').val('');
-        $('#image_add').val('');
-        $('#select_add').val('');
+        $('#form_add')[0].reset();
     })
     
 
