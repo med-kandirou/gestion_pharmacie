@@ -64,6 +64,4 @@ $(function () {
             $('alert').removeClass('hidden');
         }
     });
-
-
 });
