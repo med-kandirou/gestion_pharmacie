@@ -121,43 +121,6 @@ $(function () {
             },
         );
     });
-
-    $('#form_add').on('submit',function(e){
-        e.preventDefault();
-        getempty('libelle_add');
-        getempty('quantite_add');
-        getempty('prix_add');
-        getempty('image_add');
-        getempty('select_add');
-        if(getempty('id_add')==0 && getempty('quantite_add')==0 && getempty('prix_add')==0 && getempty('image_add')==0 && getempty('select_add')==0){
-            $.ajax({
-                url: "../Products/addProduct",type: "POST",data: new FormData(this),contentType: false,
-                cache: false,
-                processData:false,
-                success: function(data)
-                {
-                    if(data=='added'){
-                        Swal.fire({
-                            title: 'Produit bien ajouté',
-                            text: "pouvez-vous ajouter un autre ?",
-                            icon: 'success',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            confirmButtonText: 'Oui!'
-                          }).then((result) => {
-                            if (result.isConfirmed) {
-                                $('#form_add')[0].reset();
-                            }
-                            else{
-                                location.href=location.href;
-                            }
-                          })
-                    }
-                },           
-            });
-        }  
-    })
 });
 
 
