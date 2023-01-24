@@ -19,4 +19,5 @@ class Users extends Controller{
         $this->view('login');
         exit();
     }
+    
 }
