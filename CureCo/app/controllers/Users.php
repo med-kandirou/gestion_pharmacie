@@ -16,7 +16,7 @@ class Users extends Controller{
 
     public function logout(){
         session_destroy();
-        header('location:../pages/index');
+        $this->view('login');
         exit();
     }
 }
