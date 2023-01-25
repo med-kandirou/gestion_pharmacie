@@ -37,7 +37,7 @@
                  src="<?= URLROOT.'/img/pic1.jpg' ?>"
                  alt="office content 1">
             <img class="mt-4 w-full lg:mt-10 rounded-lg"
-                 src="<?= URLROOT.'/img/pic2.jpg' ?>"
+                 src="<?= URLROOT.'/img/pic2.webp' ?>"
                  alt="office content 2">
         </div>
     </div>
