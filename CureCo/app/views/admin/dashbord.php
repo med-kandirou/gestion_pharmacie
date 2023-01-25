@@ -8,8 +8,8 @@
 
   <!-- Section: Design Block -->
   <section class="mb-32 text-gray-800 text-center">
-    <h2 class="text-3xl font-bold" style="margin-top: 20px;">Statistiques</h2>
-    <div class="h-screen grid items-center lg:gap-x-12 md:grid-cols-3 gap-4">
+    <h2 class="text-3xl font-bold" style="margin-top: 20px;margin-bottom: 60px;">Statistiques</h2>
+    <div class=" grid items-center lg:gap-x-12 md:grid-cols-3 gap-4 mt-20">
       <div class="mb-12 lg:mb-0">
         <div class="rounded-lg shadow-lg h-full block bg-white">
           <div class="flex justify-center">
